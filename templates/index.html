@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="/">Scraper</a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/idr-rates">IDR Rates</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid" style="margin-top: 30px;text-align: center;">
+  <div>
+    {% if data %}
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date</th>
+          <th scope="col">Inverse Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for value in data %}
+        <tr>
+          <th scope="row">{{ value['code'] }}</th>
+          <td>{{ value['name'] }}</td>
+          <td>{{ value['date'] }}</td>
+          <td>{{ value['inverseRate'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+</div>
+
+</body>
+</html>
